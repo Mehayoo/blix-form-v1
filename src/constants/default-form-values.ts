@@ -1,5 +1,7 @@
+import { AccountType } from './account-type.enum'
+
 export const DEFAULT_BASE_VALUES = {
-	accountType: 'Manual',
+	accountType: AccountType.MANUAL,
 	username: '',
 	password: '',
 	serverAddress: '',

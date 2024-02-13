@@ -12,9 +12,7 @@ const App = () => {
 
 	return (
 		<div className="App container">
-			<div className="section">
-				<Form />
-			</div>
+			<Form />
 		</div>
 	)
 }
