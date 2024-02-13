@@ -9,6 +9,7 @@ import {
 	DEFAULT_EXTENDED_VALUES,
 	formLiterals,
 } from '../constants'
+import './style.scss'
 
 const Form = () => {
 	const [accountType, setAccountType] = useState<AccountType>(
@@ -33,7 +34,7 @@ const Form = () => {
 	const handleFormSubmit = (data: FormInputs): void => {
 		const { accountType, username, password, serverAddress } = data
 
-		let requestObject
+		let requestObject: FormInputs
 
 		if (accountType === AccountType.MANUAL) {
 			requestObject = { accountType, username, password, serverAddress }
@@ -83,21 +84,33 @@ const Form = () => {
 					</div>
 
 					<div>
-						<label>{formLiterals.labels.username}</label>
+						<label>{formLiterals.labels.username} *</label>
 						<input type="text" {...register('username')} />
-						{<span>{errors.username?.message}</span>}
+						{
+							<span className="error-msg">
+								{errors.username?.message}
+							</span>
+						}
 					</div>
 
 					<div>
-						<label>{formLiterals.labels.password}</label>
+						<label>{formLiterals.labels.password} *</label>
 						<input type="password" {...register('password')} />
-						{<span>{errors.password?.message}</span>}
+						{
+							<span className="error-msg">
+								{errors.password?.message}
+							</span>
+						}
 					</div>
 
 					<div>
 						<label>{formLiterals.labels.serverAddress}</label>
 						<input type="text" {...register('serverAddress')} />
-						{<span>{errors.serverAddress?.message}</span>}
+						{
+							<span className="error-msg">
+								{errors.serverAddress?.message}
+							</span>
+						}
 					</div>
 
 					{accountType === AccountType.ADVANCED && (
@@ -108,13 +121,21 @@ const Form = () => {
 									type="text"
 									{...register('serverPath')}
 								/>
-								{<span>{errors.serverPath?.message}</span>}
+								{
+									<span className="error-msg">
+										{errors.serverPath?.message}
+									</span>
+								}
 							</div>
 
 							<div>
 								<label>{formLiterals.labels.port}</label>
 								<input type="number" {...register('port')} />
-								{<span>{errors.port?.message}</span>}
+								{
+									<span className="error-msg">
+										{errors.port?.message}
+									</span>
+								}
 							</div>
 
 							<div>
